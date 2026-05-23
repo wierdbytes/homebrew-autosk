@@ -5,20 +5,20 @@
 class Autosk < Formula
   desc "Task manager and workflow manager for coding agents"
   homepage "https://github.com/wierdbytes/autosk"
-  version "0.1.2"
+  version "0.1.3"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/wierdbytes/autosk/releases/download/v#{version}/autosk-osx-arm64"
-      sha256 "60046d2813e60f59703c5986ee3718f3067c7317ea010288795db58ed1502fc6"
+      sha256 "72088190f5a08789e3e54ec46776779a2b5d5afa0b0bec44ef833f213e85f62c"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/wierdbytes/autosk/releases/download/v#{version}/autosk-linux-x64"
-      sha256 "4b181529a62fc385d10029dd8142e21015106bc9c17a159b7fc2758b7258ab1e"
+      sha256 "e3cf5f5d03f66e24fb810da94b08d2688f13db90d008093a18fdfb6a09751d0e"
     end
   end
 
