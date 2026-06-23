@@ -2,39 +2,59 @@
 
 [Homebrew](https://brew.sh) tap for [`autosk`](https://github.com/wierdbytes/autosk) — a task manager and workflow manager for coding agents.
 
+> **Formula retired.** The old `Formula/autosk.rb` (a bare CLI binary) has been
+> removed. This tap is now **cask-only**: install the signed/notarized macOS app
+> with `brew install --cask wierdbytes/autosk/autosk`. On **Linux**, install from
+> the [GitHub Release assets](https://github.com/wierdbytes/autosk/releases) (or
+> npm) — Homebrew is not used on Linux.
+
 ## Install
 
 ```sh
-brew install wierdbytes/autosk/autosk
+brew install --cask wierdbytes/autosk/autosk
 ```
 
 ## Upgrade
 
 ```sh
 brew update
-brew upgrade autosk
+brew upgrade --cask autosk
 ```
 
 ## Uninstall
 
 ```sh
-brew uninstall autosk
+brew uninstall --cask autosk
 brew untap wierdbytes/autosk    # optional: drop the tap itself
 ```
 
 ## What you get
 
-A prebuilt `autosk` binary on:
+The signed + notarized **autosk** GUI app (`autosk.app`) for macOS (Apple
+Silicon, arm64). The bundle embeds the CLI/TUI and the daemon as sidecars, and
+the cask symlinks both onto your `PATH`:
 
-| Platform        | Asset                  |
-| --------------- | ---------------------- |
-| macOS (arm64)   | `autosk-osx-arm64`     |
-| Linux (x86_64)  | `autosk-linux-x64`     |
+| Command   | Source                                       |
+| --------- | -------------------------------------------- |
+| `autosk`  | `autosk.app/Contents/MacOS/autosk-cli`       |
+| `autoskd` | `autosk.app/Contents/MacOS/autoskd`          |
 
-The binary is downloaded from the corresponding GitHub release in [`wierdbytes/autosk`](https://github.com/wierdbytes/autosk/releases), so macOS Gatekeeper treats it as installed locally — no quarantine prompt.
+So a terminal `autosk`/`autoskd` works, and launching the app from Finder
+auto-spawns the embedded daemon — no shell `PATH` dependency.
 
-Other platforms (macOS Intel, Linux arm64, Windows) aren't covered yet — they will land once they're wired into CI in the main repo.
+| Platform        | Distribution                                  |
+| --------------- | --------------------------------------------- |
+| macOS (arm64)   | this cask (`brew install --cask …`)           |
+| Linux (x86_64)  | [Release assets](https://github.com/wierdbytes/autosk/releases) / npm |
+
+macOS Intel and other platforms aren't covered by the cask. The DMG is signed
+with a Developer ID certificate and notarized + stapled, so Gatekeeper treats it
+as trusted on first launch.
 
 ## How it stays in sync
 
-Every tagged release in `wierdbytes/autosk` triggers a workflow that recomputes the binary SHA-256 sums and pushes an updated `Formula/autosk.rb` here. There's no manual bookkeeping; if `wierdbytes/autosk` shipped a release, this tap already knows about it.
+Every **stable** tagged release in `wierdbytes/autosk` triggers a workflow that
+recomputes the DMG SHA-256 and pushes an updated `Casks/autosk.rb` here. There's
+no manual bookkeeping; if `wierdbytes/autosk` shipped a stable release, this tap
+already knows about it. Pre-release tags (`-rc`, `-beta`, …) go to TestFlight and
+do **not** bump the cask.
