@@ -3,8 +3,8 @@
 # know what you're doing -- your changes will be overwritten on the
 # next release.
 cask "autosk" do
-  version "0.2.0"
-  sha256 "e0f20e2960ca2959fb2bd0d9f00f82c9f43c9629f6e92ec5ec27246b3cf2bc7f"
+  version "0.2.1"
+  sha256 "3f5f63c15be23ea5876c1b7a6e6abbdc2cef5bf5781882eaf37c345c4eba76f1"
 
   url "https://github.com/wierdbytes/autosk/releases/download/v#{version}/autosk_#{version}_aarch64.dmg"
   name "autosk"
