@@ -4,7 +4,7 @@
 # next release.
 cask "autosk" do
   version "0.2.2"
-  sha256 "c15066beece7231afbd05e27bb6a4a7ff29c599cc9d2c6e34b22fd468b5d242f"
+  sha256 "7fe10803a09a1530aec92e7649ca890a07a91d2e7b896ec6aff8ded7b454e845"
 
   url "https://github.com/wierdbytes/autosk/releases/download/v#{version}/autosk_#{version}_aarch64.dmg"
   name "autosk"
