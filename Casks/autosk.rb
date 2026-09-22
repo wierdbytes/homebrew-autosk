@@ -11,7 +11,7 @@ cask "autosk" do
   desc "Task manager and workflow manager for coding agents"
   homepage "https://github.com/wierdbytes/autosk"
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
   depends_on arch: :arm64
 
   app "autosk.app"
