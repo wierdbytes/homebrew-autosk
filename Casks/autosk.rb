@@ -11,11 +11,10 @@ cask "autosk" do
   desc "Task manager and workflow manager for coding agents"
   homepage "https://github.com/wierdbytes/autosk"
 
-  depends_on :macos
   depends_on arch: :arm64
+  depends_on :macos
 
   app "autosk.app"
-
   # The GUI embeds the CLI/TUI + daemon as sidecars; expose both on PATH.
   # The CLI sidecar is named `autosk-cli` inside the bundle (the app's
   # own main binary is already `autosk`), so rename it back to `autosk`.
@@ -24,7 +23,7 @@ cask "autosk" do
 
   zap trash: [
     "~/.autosk",
-    "~/Library/Application Support/autosk",
     "~/Library/Application Support/app.autosk.gui",
+    "~/Library/Application Support/autosk",
   ]
 end
